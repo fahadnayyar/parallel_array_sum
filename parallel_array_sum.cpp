@@ -10,6 +10,7 @@ int number_of_threads;
 ll size_of_array;
 ll * input_array;
 ll * thread_sum_array;
+int thread_sum_array_size;
 int chunk;
 int stride;
 
@@ -25,7 +26,7 @@ void verify (ll total_sum);
 
 void print_thread_sum_array() {
    
-   for (int i=0; i<number_of_threads; i++) {
+   for (int i=0; i<thread_sum_array_size; i++) {
       printf("%lld, ", thread_sum_array[i]);
    }
    printf("\n\n");
@@ -52,7 +53,13 @@ void read_environment_variables() {
       number_of_threads = get_nprocs();
       printf("Executing parallel_array_sum using %d threads = (DEFAULT number of processors available).\n\n", number_of_threads);
    }
-   thread_sum_array = (ll *) malloc(sizeof(ll)*number_of_threads);
+   
+   thread_sum_array_size = pow(2, ceil(log(number_of_threads)/log(2)));
+   #ifdef DEBUG
+      printf("thread_sum_array_size: %d\n\n", thread_sum_array_size);
+   #endif
+   
+   thread_sum_array = (ll *) calloc(thread_sum_array_size, sizeof(ll));
 
    //* Reading the size_of_array from the environment variable "ARRAY_SIZE"
    char * size_of_array_ptr = (char *)getenv("ARRAY_SIZE");
@@ -144,25 +151,26 @@ void * thread_sum_function (void * thread_number_ptr) {
 
 ll combime_thread_sums() {
 
-   pthread_t thread_array[number_of_threads]; 
+   pthread_t thread_array[thread_sum_array_size]; 
    stride = 1;
    vector<int> threads_spawned;
-   while (stride < number_of_threads) {
-      for (int i=0; i<number_of_threads ; i++) {
+   while (stride < thread_sum_array_size) {
+      for (int i = 0; i < thread_sum_array_size; i++) {
          int thread_number = i;
          int * index = (int *) malloc(sizeof(int));
          *index = (thread_number+1)*stride*2 - 1;
-         if (*index < number_of_threads) {
+         if (*index < thread_sum_array_size) {
             pthread_create(&thread_array[thread_number], NULL, strided_addition_function, index);
             threads_spawned.push_back(i);
          }
       }
       for (auto& iterator : threads_spawned) { 
         pthread_join(thread_array[iterator], NULL);
-      } 
+      }
+      threads_spawned.clear(); 
       stride *= 2;
    }
-   return thread_sum_array[number_of_threads-1];
+   return thread_sum_array[thread_sum_array_size-1];
 
    // ll total_sum = 0;
    // //* adding all the sums from threads
@@ -225,15 +233,3 @@ int main ( void ) {
    return 0;
    
 }
-
-// S -> size of array
-// N -> numbe of threads
-// O(S/N) + O(N)
-
-// O(S/N) + O(log(n))
-
-// [10,2,7,4]
-
-// arr[N]
-// N
-// N -> N/2 -> N/4 ... 1 
