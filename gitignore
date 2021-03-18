@@ -1,4 +1,4 @@
-parallel_array_sum
-speedup_test
-interactive
-parallel_array_sum.o
+/parallel_array_sum
+/speedup_test
+/interactive
+/parallel_array_sum.o
