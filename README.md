@@ -1,5 +1,5 @@
 # parallel_array_sum
-A library to do parallel addition of array using pthreads in O(M/N + Log N) time. (M = size of input array, N = number of threads used for addition)/
+A library to do parallel addition of array using pthreads in O(M/N + Log N) time. (M = size of input array, N = number of threads used for addition)
 
 ## To build:
 $ make
