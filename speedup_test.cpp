@@ -67,11 +67,9 @@ int main ( int argc, char *argv[] ) {
  
    ll * input_array = generate_array(input_array_size);
 
-   print_parallel_sum_time (input_array_size, input_array, 1);
-   print_parallel_sum_time (input_array_size, input_array, 2);
-   print_parallel_sum_time (input_array_size, input_array, 4);
-   print_parallel_sum_time (input_array_size, input_array, 8);
-   print_parallel_sum_time (input_array_size, input_array, 16);   
+   for (int threads=1; threads<16; threads++) {
+      print_parallel_sum_time (input_array_size, input_array, threads);
+   }
    
    free(input_array);
 
