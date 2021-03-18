@@ -61,7 +61,8 @@ void print_parallel_sum_time (ll input_array_size, ll * input_array, int number_
    long seconds = end.tv_sec - begin.tv_sec;
    long nanoseconds = end.tv_nsec - begin.tv_nsec;
    double elapsed = seconds + nanoseconds*1e-9;
-   std::cout  << "Total time taken (millisec): " << elapsed*1000 << std::endl;
+   std::cout << "THREADS = " << number_of_threads << ", " << "ARRAY_SIZE = " << input_array_size << "\n";
+   std::cout  << "Total time taken (millisec): " << elapsed*1000 << "\n\n";
 
    //* Commneted currently for faster execution. Can be uncommented to verify that addition is correct.
    // verify(total_parallel_sum, input_array, input_array_size);
