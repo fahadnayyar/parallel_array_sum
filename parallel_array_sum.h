@@ -2,6 +2,7 @@
  * This calss does parallel addition of elements of input_array using threads.
  * The runtime complexity of parallel addition is: O(M/N + log(N)), M: length of array, and N: number of threads used.
  * NOTE: in the comments N means the number_of_threads used and M denote the size_of_input_array.
+ * NOTE: ll is defined as lng long int
  * @author: Fahad Nayyar, 2021
  */
 

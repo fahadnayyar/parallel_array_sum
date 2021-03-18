@@ -2,6 +2,7 @@
  * This script generates random arrays of random sizes and 
    add them using a varaiety of number of threads. 
  * This is to check that ParallleSum can handle input_array of any size and any possible number_of_threads. 
+ * NOTE: ll is defined as lng long int in "parallel_array_sum.h"
  * @author: Fahad Nayyar, 2021
  */
 

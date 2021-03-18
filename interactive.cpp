@@ -1,6 +1,7 @@
 /* Script to enable interactive usage of the parallel addition using ParallelSum class. 
  * USAGE: ./interactive <NUMBER_OF_THREADS> <SIZE_OF_INPUT_ARRAY>
    Then input the elements of the input_array.
+ * NOTE: ll is defined as lng long int in "parallel_array_sum.h"
  * @author: Fahad Nayyar, 2021
  */
 

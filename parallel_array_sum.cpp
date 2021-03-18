@@ -1,6 +1,7 @@
 /* Implementation of ParallelSum class, which adds elements of an array using threads.
  * The runtime complexity of parallel addition is: O(M/N + log(N)), M: length of array, and N: number of threads used.
  * NOTE: in the comments N means the number_of_threads used and M denote the size_of_input_array.
+ * NOTE: ll is defined as lng long int in "parallel_array_sum.h"
  * @author: Fahad Nayyar, 2021
  */
 
