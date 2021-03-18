@@ -2,7 +2,7 @@
 #include <sys/sysinfo.h>
 #include "parallel_array_sum.h"
 
-#define DEFAULT_ARRAY_SIZE 1024*1024*128
+#define DEFAULT_ARRAY_SIZE 1024*1024*1024
 
 ll * generate_array (ll input_array_size) {
   ll * input_array = (ll *) malloc(sizeof(ll)*input_array_size); 
@@ -67,7 +67,7 @@ int main ( int argc, char *argv[] ) {
  
    ll * input_array = generate_array(input_array_size);
 
-   for (int threads=1; threads<16; threads++) {
+   for (int threads=1; threads<32; threads++) {
       print_parallel_sum_time (input_array_size, input_array, threads);
    }
    
