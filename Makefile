@@ -1,10 +1,14 @@
-default: parallel_array_sum 
+default: test 
 
-parallel_array_sum: parallel_array_sum.cpp
-	g++ -g parallel_array_sum.cpp -o parallel_array_sum -lpthread
+test: parallel_array_sum.o test.cpp
+	g++ -g test.cpp parallel_array_sum.o -o test -lpthread
+
+parallel_array_sum.o: parallel_array_sum.cpp parallel_array_sum.h
+	g++ -g parallel_array_sum.cpp -c -o parallel_array_sum.o -lpthread
 
 run:
-	./parallel_array_sum
+	./test
 
 clean:
-	rm ./parallel_array_sum
+	rm ./test
+	rm *.o
