@@ -202,7 +202,7 @@ void *  ParallelSum::strided_addition_function (void * arg) {
    struct pthreadFunctionArgs_2 * pthreadFunctionArgs_2_ptr = (struct pthreadFunctionArgs_2 *) arg;
    int index = pthreadFunctionArgs_2_ptr->index;
    int stride = pthreadFunctionArgs_2_ptr->stride;
-   ll * combime_thread_sums_ = pthreadFunctionArgs_2_ptr->thread_sum_array;
+   ll * thread_sum_array_ = pthreadFunctionArgs_2_ptr->thread_sum_array;
    thread_sum_array_[index] += thread_sum_array_[index-stride];
    free(arg);
 
