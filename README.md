@@ -11,8 +11,8 @@ $ ./speedup_test
 $ ./random_tests
 
 ## To use the paralll_sum interactively:
-$./interactive <NUMBER_OF_THREADS> <SIZE_OF_INPUT_ARRAY>
-$ entry the elements of the array
+$ ./interactive <NUMBER_OF_THREADS> <SIZE_OF_INPUT_ARRAY> \
+$ enter the elements of the array
 
 
 ## To delete the executable:
